@@ -11,5 +11,3 @@ class CryptoTickerSearched extends CryptoEvent {
   const CryptoTickerSearched(this.tickerID);
   final String tickerID;
 }
-
-class LoadOrderBookRequested extends CryptoEvent {}
