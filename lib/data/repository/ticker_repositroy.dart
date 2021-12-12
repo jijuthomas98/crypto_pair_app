@@ -43,7 +43,7 @@ class TickerRepository {
         return null;
       }
     } catch (e) {
-      throw TickerDataFetchException(e.toString());
+      throw OrderBookFetchException(e.toString());
     }
   }
 }
