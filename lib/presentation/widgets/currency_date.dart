@@ -77,9 +77,22 @@ class CurrencyData extends StatelessWidget {
                 );
               }
               if (state is FetchOrderBookSuccessfull) {
-                return OrderBookWidget(
-                  asks: state.orderBook.asks,
-                  bids: state.orderBook.bids,
+                return Column(
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          context
+                              .read<OrderbookBloc>()
+                              .add(ResetOrderBookStateRequested());
+                        },
+                        child: const Text(
+                          'HIDE ORDER BOOK',
+                        )),
+                    OrderBookWidget(
+                      asks: state.orderBook.asks,
+                      bids: state.orderBook.bids,
+                    ),
+                  ],
                 );
               }
               return TextButton(
