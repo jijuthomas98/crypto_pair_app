@@ -4,6 +4,7 @@ import 'package:crypto_pair_app/utils/router_config.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  setupLocator();
   runApp(const AppRunner());
 }
 
