@@ -44,27 +44,3 @@ class FetchingTickerDataSuccessfull extends CryptoState
     this.ticker = ticker;
   }
 }
-
-class OrderBookLoading extends CryptoState with TickerIDMixin, TickerDataMixin {
-  OrderBookLoading(String tickerId, Ticker ticker) {
-    this.tickerId = tickerId;
-    this.ticker = ticker;
-  }
-}
-
-class FetchOrderBookFailed extends CryptoState
-    with TickerIDMixin, TickerDataMixin {
-  FetchOrderBookFailed(String tickerId, Ticker ticker) {
-    this.tickerId = tickerId;
-    this.ticker = ticker;
-  }
-}
-
-class FetchOrderBookSuccessfull extends CryptoState
-    with TickerIDMixin, TickerDataMixin {
-  FetchOrderBookSuccessfull(String tickerId, Ticker ticker, this.orderBook) {
-    this.tickerId = tickerId;
-    this.ticker = ticker;
-  }
-  final OrderBook orderBook;
-}

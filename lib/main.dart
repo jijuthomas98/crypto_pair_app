@@ -1,5 +1,7 @@
+import 'package:crypto_pair_app/data/model/order_book.dart';
 import 'package:crypto_pair_app/data/repository/ticker_repositroy.dart';
 import 'package:crypto_pair_app/logic/crypto_bloc/crypto_bloc.dart';
+import 'package:crypto_pair_app/logic/order_book_bloc/orderbook_bloc.dart';
 import 'package:crypto_pair_app/services/router_services.dart';
 import 'package:crypto_pair_app/utils/locator.dart';
 import 'package:crypto_pair_app/utils/router_config.dart';
@@ -20,8 +22,16 @@ class AppRunner extends StatelessWidget {
         locator<RouterServices>().getNavigatorKey();
     return RepositoryProvider(
       create: (context) => TickerRepository(),
-      child: BlocProvider<CryptoBloc>(
-        create: (context) => CryptoBloc(context.read<TickerRepository>()),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => CryptoBloc(context.read<TickerRepository>()),
+          ),
+          BlocProvider(
+            create: (context) =>
+                OrderbookBloc(context.read<TickerRepository>()),
+          )
+        ],
         child: MaterialApp(
           title: 'Crypto pair app',
           navigatorKey: navigatorKey,

@@ -10,14 +10,8 @@ class OrderBook extends Equatable {
 
   static OrderBook fromJson(Map<String, dynamic> json) {
     return OrderBook(
-      bids: (json['bids'] as Map)
-          .entries
-          .map((e) => Bids.fromList(e.value))
-          .toList(),
-      asks: (json['asks'] as Map)
-          .entries
-          .map((e) => Asks.fromList(e.value))
-          .toList(),
+      bids: (json['bids'] as List).map((e) => Bids.fromList(e)).toList(),
+      asks: (json['asks'] as List).map((e) => Asks.fromList(e)).toList(),
     );
   }
 
