@@ -12,8 +12,8 @@ class Ticker extends Equatable {
 
   static Ticker fromJson(Map<String, dynamic> json) {
     return Ticker(
-      timeStamp: json['timestamp'] as DateTime,
-      openPrice: json['open'] as String,
+      timeStamp: DateTime.parse(json['timestamp']),
+      openPrice: json['open'].toString(),
       highPrice: json['high'],
       lowPrice: json['low'],
       lastPrice: json['last'],
