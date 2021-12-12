@@ -1,3 +1,6 @@
+import 'package:crypto_pair_app/services/router_services.dart';
+import 'package:crypto_pair_app/utils/locator.dart';
+import 'package:crypto_pair_app/utils/router_config.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,8 +12,13 @@ class AppRunner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    final GlobalKey<NavigatorState> navigatorKey =
+        locator<RouterServices>().getNavigatorKey();
+    return MaterialApp(
       title: 'Crypto pair app',
+      navigatorKey: navigatorKey,
+      onGenerateRoute: RouterServices.generateRoute,
+      initialRoute: RouterConfig.home,
     );
   }
 }
